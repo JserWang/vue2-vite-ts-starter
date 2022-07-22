@@ -1,2 +1,11 @@
-# vue2.6-vite-ts-starter
-Vue2.6 + vite + Typescript
+# vue2-vite-ts-starter
+
+## Usage
+
+```bash
+# 安装依赖
+pnpm install
+
+# 启动项目
+pnpm run dev
+```
