@@ -1,21 +1,22 @@
 import { resolve } from 'path'
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
-import { createVuePlugin } from 'vite-plugin-vue2'
-import ScriptSetup from 'unplugin-vue2-script-setup/vite'
+import vue from '@vitejs/plugin-vue2'
 import AutoImport from 'unplugin-auto-import/vite'
 
 export default defineConfig({
   plugins: [
     // vite for vue 2
-    createVuePlugin({ jsx: true }),
-    ScriptSetup(),
+    vue(),
     AutoImport({
       imports: [
-        '@vue/composition-api',
+        'vue',
       ],
     }),
     splitVendorChunkPlugin(),
   ],
+  server: {
+    port: 3000
+  },
   build: {
     target: 'es2015',
     minify: 'terser', // 是否进行压缩,boolean | 'terser' | 'esbuild',默认使用terser

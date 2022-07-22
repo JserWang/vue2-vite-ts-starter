@@ -1,5 +1,5 @@
-import { readonly as defineReadonly, inject, provide, reactive } from '@vue/composition-api'
-import type { InjectionKey, UnwrapRef } from '@vue/composition-api'
+import { readonly as defineReadonly } from 'vue'
+import type { InjectionKey, UnwrapRef } from 'vue'
 
 export interface ContextOptions {
   readonly?: boolean

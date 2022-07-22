@@ -1,4 +1,4 @@
-import type { UnwrapRef } from '@vue/composition-api'
+import type { UnwrapRef } from 'vue'
 import type VueRouter from 'vue-router'
 import type { NavigationGuard, Route } from 'vue-router'
 
@@ -11,7 +11,7 @@ export function useRouter(): VueRouter {
 
   if (instance) {
     // https://github.com/vuejs/composition-api/issues/806
-    return instance.root.proxy.$router
+    return instance.proxy.$router
   }
 
   throw new Error('[useRouter] 只能在 setup的顶层函数或生命周期钩子中调用')
@@ -32,7 +32,7 @@ export function useRoute(): UnwrapRef<Route> {
       throw new Error('[useRoute] 只能在 setup 或生命周期钩子中调用')
 
     // https://github.com/vuejs/composition-api/issues/806
-    currentRoute = reactive({ ...instance.root.proxy.$route })
+    currentRoute = reactive({ ...instance.proxy.$route })
     router.afterEach(to => Object.assign(currentRoute, to))
   }
   return currentRoute
